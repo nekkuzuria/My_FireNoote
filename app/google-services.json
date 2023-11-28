@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "484953199484",
+    "project_id": "noote-8ef10",
+    "storage_bucket": "noote-8ef10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484953199484:android:235fd5681b485565eacaf9",
+        "android_client_info": {
+          "package_name": "com.example.noote"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0ELZshvuAIbQxNWnos04KavVvEWpo24o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
