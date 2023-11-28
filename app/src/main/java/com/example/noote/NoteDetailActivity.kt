@@ -16,12 +16,29 @@ class NoteDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNoteDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        updateId = intent.getStringExtra("EXTRA_NOTE_ID").toString()
 
         with(binding) {
             if (updateId != "0") {
                 // Jika updateId tidak 0, berarti sedang mengedit catatan yang sudah ada
-                // Ambil data catatan dari database dan tampilkan di EditText
-
+                // Ambil data catatan dari database dan tampilkan di EditTex
+                MainActivity.noteCollectionRef.document(updateId)
+                    .get()
+                    .addOnSuccessListener { documentSnapshot ->
+                        if (documentSnapshot.exists()) {
+                            val note = documentSnapshot.toObject(Note::class.java)
+                            if (note != null) {
+                                // Tampilkan data catatan di EditText
+                                editTextTitle.setText(note.title)
+                                editTextContent.setText(note.description)
+                            }
+                        } else {
+                            Log.d("MainActivity", "No such document")
+                        }
+                    }
+                    .addOnFailureListener { e ->
+                        Log.d("MainActivity", "Error getting document", e)
+                    }
             }
 
             btnBack.setOnClickListener {
