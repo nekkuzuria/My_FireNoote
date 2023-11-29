@@ -18,8 +18,6 @@ class MainActivity : AppCompatActivity() {
         MutableLiveData<List<Note>>()
     }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -31,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
             // Ketika tombol tambah diklik
             btnAddNote.setOnClickListener(View.OnClickListener {
-                intent.putExtra("EXTRA_NOTE_ID", 0)
+                intent.putExtra("EXTRA_NOTE_ID", "0")
                 startActivity(intent)
             })
 
@@ -97,7 +95,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("Main Activity", "error delete item! : note Id is empty")
                 return
             }
-            noteCollectionRef.document(note.id.toString()).delete().addOnFailureListener{
+            noteCollectionRef.document(note.id).delete().addOnFailureListener{
                 Log.d("Main Activity", "error deleting note", it)
             }
         }

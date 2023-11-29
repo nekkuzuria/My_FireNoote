@@ -27,6 +27,7 @@ class NoteDetailActivity : AppCompatActivity() {
                     .addOnSuccessListener { documentSnapshot ->
                         if (documentSnapshot.exists()) {
                             val note = documentSnapshot.toObject(Note::class.java)
+                            noteToDelete = note
                             if (note != null) {
                                 // Tampilkan data catatan di EditText
                                 editTextTitle.setText(note.title)
